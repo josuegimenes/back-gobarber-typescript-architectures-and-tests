@@ -15,7 +15,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/files', express.static(uploadConfig.directory));
+app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(routes);
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
@@ -35,5 +35,9 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 });
 
 app.listen(3333, () => {
+  /** Não dispara o e-mail devido firewall local, então, não
+   * deve ser usado em ambiente de produção */
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
   console.log('😎 Server started on port 3333!');
 });
