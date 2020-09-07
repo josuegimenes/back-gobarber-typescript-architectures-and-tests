@@ -27,9 +27,14 @@ describe('CreateAppointment', () => {
 
     expect(appointment).toHaveProperty('id');
     expect(appointment.provider_id).toBe('provider-id');
+    expect(appointment.user_id).toBe('user-id');
   });
 
   it('should not be able to create two appointments on the same time', async () => {
+    jest.spyOn(Date, 'now').mockImplementationOnce(() => {
+      return new Date(2020, 4, 10, 10).getTime();
+    });
+
     const appointmentDate = new Date(2020, 4, 10, 11);
 
     await createAppointment.execute({
