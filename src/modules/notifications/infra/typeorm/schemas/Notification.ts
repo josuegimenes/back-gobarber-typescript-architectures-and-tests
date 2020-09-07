@@ -6,7 +6,7 @@ class Notification {
   id: ObjectID;
 
   @Column()
-  content: string;.
+  content: string;
 
   @Column('uuid')
   recipient_id: string;
@@ -17,7 +17,7 @@ class Notification {
   @CreateDateColumn()
   created_at: Date;
 
-  @CreateDateColumn()
+  @UpdateDateColumn()
   updated_at: Date;
 }
 
