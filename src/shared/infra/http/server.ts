@@ -45,5 +45,5 @@ app.listen(3333, () => {
    * deve ser usado em ambiente de produção */
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
-  console.log('😎 Server started on port 3333!');
+  console.log('🚀 Server started on port 3333!');
 });
